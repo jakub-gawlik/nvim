@@ -13,6 +13,12 @@ return {
 				typescript = { "prettier" },
 				vue = { "prettier" },
 				php = { "php-cs-fixer" },
+				markdown = { "mdformat" },
+			},
+			formatters = {
+				mdformat = {
+					prepend_args = { "--wrap", "120" },
+				},
 			},
 		})
 	end,
