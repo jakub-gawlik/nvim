@@ -3,7 +3,7 @@ return {
 	config = function()
 		require("conform").setup({
 			format_on_save = {
-				timeout_ms = 500,
+				timeout_ms = 2000,
 				lsp_format = "fallback",
 			},
 			formatters_by_ft = {
@@ -13,6 +13,13 @@ return {
 				typescript = { "prettier" },
 				vue = { "prettier" },
 				php = { "php-cs-fixer" },
+				markdown = { "mdformat" },
+				python = { "black" },
+			},
+			formatters = {
+				mdformat = {
+					prepend_args = { "--wrap", "120" },
+				},
 			},
 		})
 	end,
