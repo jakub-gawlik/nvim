@@ -21,22 +21,29 @@ return {
 		-- Custom action to open multiple files
 		local open_selected = function(prompt_bufnr, mode)
 			local picker = action_state.get_current_picker(prompt_bufnr)
+			if not picker then
+				return
+			end
 			local multi_selection = picker:get_multi_selection()
-
-			actions.close(prompt_bufnr)
 
 			-- If nothing was selected, just open the single selection
 			if #multi_selection == 0 then
+				local entry = action_state.get_selected_entry()
+				if not entry then
+					return
+				end
+				actions.close(prompt_bufnr)
 				if mode == "vertical" then
 					vim.cmd("vsplit")
 				elseif mode == "horizontal" then
 					vim.cmd("split")
 				end
-				actions.select_default(prompt_bufnr)
+				vim.cmd(string.format("edit %s", entry.path))
 				return
 			end
 
 			-- Open multi-selections
+			actions.close(prompt_bufnr)
 			for _, entry in ipairs(multi_selection) do
 				if mode == "vertical" then
 					vim.cmd("vsplit")
