@@ -39,6 +39,12 @@ return {
 				comments = "italic",
 				functions = "italic",
 			},
+			colors = {
+				cursorline = "#1a1c22",
+			},
+			options = {
+				cursorline = true,
+			},
 		})
 
 		vim.cmd("colorscheme onedark")
