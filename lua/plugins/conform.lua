@@ -14,13 +14,13 @@ return {
 				vue = { "prettier" },
 				php = { "php-cs-fixer" },
 				markdown = { "prettier" },
-				python = { "black" },
+				python = { "autopep8" },
 			},
-			-- formatters = {
-			--     mdformat = {
-			--         prepend_args = { "--wrap", "120" },
-			--     },
-			-- },
+			formatters = {
+				autopep8 = {
+					prepend_args = { "--indent-size", "2" },
+				},
+			},
 		})
 	end,
 }
